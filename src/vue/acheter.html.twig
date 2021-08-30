@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+
+{% block title %} {{ parent() }}Acheter{% endblock %}
+
+{% block contenu %} {{ parent() }}<h1>Acheter</h1> 
+
+<div class="card" style="width:400px">
+  <img class="card-img-top" src="img_avatar1.png" alt="Vampy">
+  <div class="card-body">
+    <h4 class="card-title">John Doe</h4>
+    <p class="card-text">Some example text.</p>
+    <a href="#" class="btn btn-primary">See Profile</a>
+  </div>
+</div>
+
+<footer class="bg-dark text-center text-white">
+  <div class="container p-4">
+    <section class="">
+      <div class="row">
+        <div class="col">
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="index.php?page=home" class="text-black">Accueil du site</a>
+            </li>
+            <li>
+              <a href="index.php?page=mentions" class="text-black">Mentions légales</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">© 2021 Tous droits réservés: Sophie HENEMAN</div>
+</footer>
+{% endblock %}

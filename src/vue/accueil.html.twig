@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} Page d'accueil{% endblock %}
+{% block contenu %}
+{{ parent() }}
+
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4">Les lutins !</h1>
+    <p class="lead">Bienvenu dans l'univers des lutins de Sophie !</p>
+    <hr class="my-4">
+    <p>Cliquez sur ce bouton pour voir tous les lutins à la vente !</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="index.php?page=acheter" role="button">Voir plus</a>
+    </p>
+  </div>
+</div>
+
+
+
+
+
+<footer class="bg-dark text-center text-white">
+  <div class="container p-4">
+    <section class="">
+      <div class="row">
+        <div class="col">
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="index.php?page=home" class="text-black">Accueil du site</a>
+            </li>
+            <li>
+              <a href="index.php?page=mentions" class="text-black">Mentions légales</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">© 2021 Tous droits réservés: Sophie HENEMAN</div>
+</footer>
+{% endblock %}

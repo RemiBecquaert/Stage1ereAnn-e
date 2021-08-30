@@ -1,0 +1,79 @@
+{% extends "base.html.twig" %}
+
+{% block title %} {{ parent() }} Liste produit{% endblock %}
+
+{% block contenu %} {{ parent() }}
+<style>
+.image {
+  width:11%;
+}
+
+@media (max-width: 100em) {
+  .image {
+    width: 125%;
+  }
+}
+</style>
+
+<div class="container">
+  <a href="index.php?page=ajoutlutin" class="btn btn-outline-dark" role="button" aria-pressed="true">Cliquez ici pour revenir à la page d'ajout de produit</a>  
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Désignation</th>
+          <th scope="col">Numéro produit</th>
+          <th scope="col">Nom produit</th>
+          <th scope="col">Description produit</th>
+          <th scope="col">Prix</th>
+          <th scope="col">Photo</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for l in liste %}
+        <tr>
+          <td>{{l.libelletype}}</td>
+          <td>{{l.numero}}</td>
+          <td>{{l.nomProduit}}</td>
+          <td>{{l.desProduit}}</td>
+          <td>{{l.prix}}€</td>
+          <td>
+          {% if l.photo is not empty %}
+            <img class="image" src="images/{{l.photo}}" alt= "image du produit" />
+          {% else %}
+            <img class="image" src="images/produit_sans_image.jpg" alt= "image du produit" />
+          {% endif %}
+          </td>
+          <td><a href="index.php?page=produit-modif">Modifier</a></td>
+          <td><a href="#">Supprimer</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<footer class="bg-dark text-center text-black">
+  <div class="container p-4">
+    <section class="">
+      <div class="row">
+        <div class="col">
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="index.php?page=home" class="text-black">Accueil du site</a>
+            </li>
+            <li>
+              <a href="index.php?page=mentions" class="text-black">Mentions légales</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">© 2021 Tous droits réservés: Sophie HENEMAN</div>
+</footer>
+{% endblock %}

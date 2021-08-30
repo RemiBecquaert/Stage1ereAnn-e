@@ -1,0 +1,73 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} Ajout produit{% endblock %}
+{% block contenu %}
+{{ parent() }}
+
+<div class="container">
+
+{% if form.valide is defined %}
+  {% if form.valide == true %}
+    <h2>Félicitations, le produit a bien été ajouté !</h2>
+    <h2>Le produit se nomme {{form.nomProduit}}, porte le numéro {{form.numero}}</h2>
+    {% if form.idType == 1 %}
+      <h2>et c'est un lutin !</h2>
+    {% else %}
+      <h2>et c'est une carte cadeau !</h2>
+    {% endif %}
+  {% else %}
+    <h2>Échec lors de l'ajout du produit</h2>
+    <h2>Erreur: {{form.message}}</h2>
+  {% endif %}
+{% endif %}
+
+<a href="index.php?page=listeproduit" class="btn btn-outline-dark" role="button" aria-pressed="true">Cliquez ici pour consulter la liste des produits mis en vente</a>
+
+ <h2>Formulaire d'ajout de produit</h2>
+<form action="index.php?page=ajoutlutin" method="post" enctype="multipart/form-data">
+
+  <label for="numero" class="sr-only">Numéro d'identification</label>
+  <input type="number" id="numero" name="numero" class="form-control" placeholder="Numéro d'identification:" required>
+
+  <label for="nomProduit" class="sr-only">Nom du produit</label>
+  <input type="text" id="nomProduit" name="nomProduit" class="form-control" placeholder="Nom du produit:" required autofocus>
+ 
+  <label for="desProduit" class="sr-only">Description du produit</label>
+  <input type="text" id="desProduit" name="desProduit" class="form-control" placeholder="Description du produit:" required autofocus>
+
+  <label for="prix" class="sr-only">Prix du produit</label>
+  <input type="number" id="prix" name="prix" class="form-control" placeholder="Prix du produit:" required>
+
+<select class="form-control" name="idType">
+  <option value="1">Lutin</option>
+  <option value="2">Carte cadeau</option>
+</select>
+ 
+<label for="photo" class="form-control">Photo</label>
+<input type="file" name="photo" id="photo" class="form-control"/>
+
+ <button class="btn btn-lg btn-primary btn-block" type="submit" name="btAjouter">Ajouter le produit</button>
+ </form>
+</div>
+
+<footer class="bg-dark text-center text-black">
+  <div class="container p-4">
+    <section class="">
+      <div class="row">
+        <div class="col">
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="index.php?page=home" class="text-black">Accueil du site</a>
+            </li>
+            <li>
+              <a href="index.php?page=mentions" class="text-black">Mentions légales</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">© 2021 Tous droits réservés: Sophie HENEMAN</div>
+</footer>
+{% endblock %}

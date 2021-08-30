@@ -1,0 +1,73 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} Contact{% endblock %}
+{% block contenu %}
+{{ parent() }}
+
+{% if form.etat is defined %}
+ {% if form.etat == true %}
+    <div class="alert alert-success" role="alert">
+      <h1 class="h3 mb-3 font-weight-normal">Suppression réussie !</h1>  
+    </div>
+ {% else %}
+    <div class="alert alert-success" role="alert">
+      <h1 class="alert alert-danger" role="alert">Problème d'insertion</h1>
+    </div>
+ {% endif %}
+{% endif %} 
+
+<form class="form-signin" action="index.php?page=contact-modif" method="post" enctype="application/x-www-form-urlencoded">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">Prénom</th>
+          <th scope="col">Email</th> 
+          <th scope="col">Texte</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+{% for c in liste %}
+        <tr>
+          <td>{{c.nom}}</td>
+          <td>{{c.prenom}}</td>
+          <td>{{c.email}}</td>
+          <td>{{c.text}}</td>
+          <td><a href="index.php?page=contact-modif&id={{c.id}}">Supprimer</a></td>
+          <td><input type="checkbox" name="cocher[]" id="cocher[]" value="{{c.id}}" /></td>
+        </tr>
+{% endfor %}
+      </tbody>
+    </table>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" name="btSupprimer">Supprimer</button>
+</form>
+</div>
+
+<footer class="bg-dark text-center text-white">
+  <div class="container p-4">
+    <section class="">
+      <div class="row">
+        <div class="col">
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="index.php?page=home" class="text-black">Accueil du site</a>
+            </li>
+            <li>
+              <a href="index.php?page=mentions" class="text-black">Mentions légales</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">© 2021 Tous droits réservés: Sophie HENEMAN</div>
+</footer>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} S'inscrire{% endblock %}
+{% block contenu %}
+{{ parent() }}
+
+
+{% if form.valide is defined %}
+  {% if form.valide == true %}
+    <div class="alert alert-success" role="alert">
+      <h2>Votre compte a bien été créé !</h2>
+      <h2>Voici votre adresse e-mail qui vous servira d'identifiant : {{form.email}}</h2>
+      <h2>Vous êtes client du site</h2>
+    </div>  
+  {% else %}
+    <div class="alert alert-danger" role="alert">
+      <h2>Échec de la création du compte</h2>
+      <h2>Voici l'erreur : {{form.message}}</h2>  
+      <h2><a href="index.php?page=inscrire">Recommencer la création du compte</a></h2>
+    </div>    
+  {% endif %}
+{% else %}
+
+<div class="container-fluid">
+  <form class="form" action="index.php?page=inscrire" method="post" enctype="application/x-www-form-urlencoded">
+    <h2>Créez votre compte client !</h2>
+
+    <label for="inputName" class="sr-only">Votre nom</label>
+      <input type="text" id="nom" name="nom" class="form-control" placeholder="Votre nom" required autofocus>
+    <label for="inputFirstname" class="sr-only">Votre prénom</label>
+      <input type="text" id="prenom" name="prenom" class="form-control" placeholder="Votre prénom" required autofocus>
+    
+    <label for="inputEmail" class="sr-only">Votre E-mail</label>
+      <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Votre E-mail" required autofocus>
+    
+    <label for="inputPassword" class="sr-only">Mot de passe</label>
+      <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Mot de passe" required>
+    
+    <label for="inputPassword2" class="sr-only">Confirmation du mot de passe</label>
+      <input type="password" id="inputPassword2" name="inputPassword2" class="form-control" placeholder="Confirmation du mot de passe" required>
+    
+    <select class="form-control" name="role">
+      <option value="2">Client</option>
+    </select>
+    
+    <button class="btn btn-lg btn-primary btn-block" type="submit" name="btInscrire">Créer mon compte client</button>
+  </form>
+</div>
+{% endif %}
+
+
+<footer class="bg-dark text-center text-white">
+  <div class="container p-4">
+    <section class="">
+      <div class="row">
+        <div class="col">
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="index.php?page=home" class="text-black">Accueil du site</a>
+            </li>
+            <li>
+              <a href="index.php?page=mentions" class="text-black">Mentions légales</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">© 2021 Tous droits réservés: Sophie HENEMAN</div>
+</footer>
+{% endblock %}

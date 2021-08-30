@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} Connexion{% endblock %}
+{% block contenu %}
+{{ parent() }}
+
+{% if form.valide is defined %}     
+    {% if form.valide == true %}
+        <h2>Connexion réussie</h2>
+        <h2>Voici votre identifiant : {{form.email}}</h2>       
+    {% else %}<h2>Échec de la connexion</h2>
+        <h2>Erreur : {{form.message}}</h2>
+        <h2><a href="index.php?page=inscrire">Retourner sur la page d'inscription</a></h2>
+
+    {% endif %}
+{% endif %}
+
+<div class="container-fluid">
+  <form class="form" action="index.php?page=connexion" method="post" enctype="application/x-www-formurlencoded">
+    <h2>Connectez-vous à votre compte client !</h2>
+
+    <label for="email" class="sr-only">Votre E-mail</label>
+      <input type="email" id="email" name="email" class="form-control" placeholder="Votre E-mail" required autofocus>
+    
+    <label for="inputPassword" class="sr-only">Mot de passe</label>
+      <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Mot de passe" required>
+    
+    <button class="btn btn-lg btn-primary btn-block" type="submit" name="btConnect">Se connecter</button>
+  </form>
+</div>
+
+<footer class="bg-dark text-center text-white">
+  <div class="container p-4">
+    <section class="">
+      <div class="row">
+        <div class="col">
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="index.php?page=home" class="text-black">Accueil du site</a>
+            </li>
+            <li>
+              <a href="index.php?page=mentions" class="text-black">Mentions légales</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">© 2021 Tous droits réservés: Sophie HENEMAN</div>
+</footer>
+
+
+
+{% endblock %}

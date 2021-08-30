@@ -1,0 +1,63 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} Contact{% endblock %}
+{% block contenu %}
+{{ parent() }}
+
+
+{% if form.valide is defined %}     
+    {% if form.valide == true %}
+        <h2>Votre message a bien été envoyé !</h2>
+        <h2>Voici le contenu de votre message : {{form.text}}</h2>       
+    {% else %}<h2>Échec de l'envoi du message</h2>
+        <h2>Erreur : {{form.message}}</h2>
+        <h2><a href="index.php?page=contact">Retourner sur la page de contact</a></h2>
+
+    {% endif %}
+{% endif %}
+
+<div class="container-fluid">
+  <form class="form" action="index.php?page=contact" method="post" enctype="application/x-www-formurlencoded">
+    <h2>Remplissez le formulaire pour nous contacter !</h2>
+
+    <label for="inputName" class="sr-only">Votre nom</label>
+      <input type="text" id="nom" name="nom" class="form-control" placeholder="Votre nom" required autofocus>
+    
+    <label for="inputFirstname" class="sr-only">Votre prénom</label>
+      <input type="text" id="prenom" name="prenom" class="form-control" placeholder="Votre prénom" required autofocus>
+
+    <label for="inputEmail" class="sr-only">Votre E-mail</label>
+      <input type="email" id="email" name="email" class="form-control" placeholder="Votre E-mail" required autofocus>
+    
+    <label for="inputText" class="sr-only"></label>
+      <input type="textArea" id="text" name="text" class="form-control" placeholder="Votre message" required>
+    
+    <button class="btn btn-lg btn-primary btn-block" type="submit" name="btSubmit">Envoyer</button>
+  </form>
+</div>
+
+<footer class="bg-dark text-center text-white">
+  <div class="container p-4">
+    <section class="">
+      <div class="row">
+        <div class="col">
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="index.php?page=home" class="text-black">Accueil du site</a>
+            </li>
+            <li>
+              <a href="index.php?page=mentions" class="text-black">Mentions légales</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">© 2021 Tous droits réservés: Sophie HENEMAN</div>
+</footer>
+
+
+
+
+{% endblock %}
