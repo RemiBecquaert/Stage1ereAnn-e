@@ -12,4 +12,5 @@
     require_once 'ajoutlutinControleur.php';
     require_once 'listeproduitControleur.php';
     require_once 'produitmodifControleur.php';
+    require_once 'produitControleur.php';
 ?>
