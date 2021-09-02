@@ -3,41 +3,66 @@
 {% block contenu %}
 {{ parent() }}
 
-<div class="container">
-  <div class="jumbotron">
-    <h1 class="display-4">Les lutins !</h1>
-    <p class="lead">Bienvenu dans l'univers des lutins de Sophie !</p>
-    <hr class="my-4">
-    <p>Cliquez sur ce bouton pour voir tous les lutins à la vente !</p>
-    <p class="lead">
-      <a class="btn btn-primary btn-lg" href="index.php?page=acheter" role="button">Voir plus</a>
-    </p>
-  </div>
-</div>
+
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-black">
+                    <h1 class="display-4 fw-bolder"><u>Lutins, gnomes et autres trolls de Sophie</u></h1>
+                    <p class="lead fw-normal text-black-50 mb-0">Bienvenue sur le site web</p>
+                </div>
+            </div>
+        </header>
+
+      {% for l in liste %}
+        <section class="col">
+          <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+              <div class="col">
+                <div class="card">
+                  {% if l.photo is not empty %}
+                    <img class="image" src="images/{{l.photo}}" alt= "image du produit" />
+                  {% else %}
+                    <img class="image" src="images/produit_sans_image.jpg" alt= {{l.nomProduit}} />
+                  {% endif %}
+                  <div class="card-body p-4">
+                    <div class="text-center">
+                      <h5 class="fw-bolder">{{l.nomProduit}}</h5>
+                      {{l.prix}}€
+                    </div>
+                  </div>
+                  <div class="card-footer p-4 pt-0 border-top-1 bg-transparent">
+                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Acheter</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>        
+          </div>               
+        </section>            
+      {% endfor %}              
+                   
 
 
+        
+        <footer class="bg-dark text-center text-white">
+          <div class="container p-4">
+            <section class="">
+              <div class="row">
+                <div class="col">
 
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="index.php?page=home" class="text-black">Accueil du site</a>
+                    </li>
+                    <li>
+                      <a href="index.php?page=mentions" class="text-black">Mentions légales</a>
+                    </li>
+                  </ul>
+                </div>
 
-
-<footer class="bg-dark text-center text-white">
-  <div class="container p-4">
-    <section class="">
-      <div class="row">
-        <div class="col">
-
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="index.php?page=home" class="text-black">Accueil du site</a>
-            </li>
-            <li>
-              <a href="index.php?page=mentions" class="text-black">Mentions légales</a>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-  </div>
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">© 2021 Tous droits réservés: Sophie HENEMAN</div>
-</footer>
+              </div>
+            </section>
+          </div>
+          <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">© 2021 Tous droits réservés: Sophie HENEMAN</div>
+        </footer>
 {% endblock %}

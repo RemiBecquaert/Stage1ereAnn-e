@@ -7,7 +7,6 @@
     require_once 'maintenanceControleur.php';
     require_once 'disconnectControleur.php';
     require_once 'utilisateurControleur.php';
-    require_once 'acheterControleur.php';
     require_once 'infoclientControleur.php';
     require_once 'commentfaireControleur.php';
     require_once 'ajoutlutinControleur.php';

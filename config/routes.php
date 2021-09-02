@@ -11,7 +11,6 @@ function getPage($db){
     $lesPages['deconnexion'] = "disconnectControleur;0";
     $lesPages['utilisateur'] = "utilisateurControleur;1";
     $lesPages['modifier'] = "utilisateurModifControleur;1";
-    $lesPages['acheter'] = "acheterControleur;0";
     $lesPages['infoclient'] = "infoclientControleur;2";
     $lesPages['contact-modif'] = "contactModifControleur;1";
     $lesPages['commentfaire'] = "commentfaireControleur;1";
