@@ -15,6 +15,16 @@
 }
 </style>
 
+{% if form.etat is defined %}
+  {% if form.etat == true %}
+    <h2 class="h3 mb-3 font-weight-normal">Suppression réussie</h2>
+    {% else %}
+    <h2 class="alert alert-danger" role="alert">Problème de suppression du produit</h2>
+  {% endif %}  
+{% endif %}
+
+<form class="form-signin" action="index.php?page=listeproduit" method="post" enctype="application/x-www-form-urlencoded">
+
 <div class="container">
   <a href="index.php?page=ajoutlutin" class="btn btn-outline-dark" role="button" aria-pressed="true">Cliquez ici pour revenir à la page d'ajout de produit</a>  
   <div class="table-responsive">
@@ -27,6 +37,7 @@
           <th scope="col">Description produit</th>
           <th scope="col">Prix</th>
           <th scope="col">Photo</th>
+          <th scope="col"></th>
           <th scope="col"></th>
           <th scope="col"></th>
         </tr>
@@ -46,12 +57,15 @@
             <img class="image" src="images/produit_sans_image.jpg" alt= "image du produit" />
           {% endif %}
           </td>
-          <td><a href="index.php?page=produit-modif">Modifier</a></td>
-          <td><a href="#">Supprimer</a></td>
+          <td><a href="index.php?page=produit-modif&idProduit={{l.idProduit}}">Modifier</a></td>
+          <td><a href="index.php?page=listeproduit&idProduit={{l.idProduit}}">Supprimer</a></td>
+          <td><input type="checkbox" name="cocher[]" id="cocher[]" value="{{l.idProduit}}" /></td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" name="btSupprimer">Supprimer</button>
+</form> 
   </div>
 </div>
 
