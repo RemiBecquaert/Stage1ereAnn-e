@@ -15,7 +15,7 @@ class Produit{
         $this->select = $db->prepare("select idProduit, numero, l.idType, nomProduit, desProduit, prix, t.libelle as libelletype, photo from lutins l, type t where l.idType = t.idType order by numero");
         $this->selectById = $db->prepare("select idProduit, numero, idType, nomProduit, desProduit, prix, photo from lutins where idProduit=:idProduit");
         $this->delete = $db->prepare("delete from lutins where idProduit=:idProduit");
-        $this->update = $db->prepare("update lutins set numero=:numero, nomProduit=:nomProduit, desProduit=:desProduit, prix=:prix, photo=:photo where idProduit=:idProduit");
+        $this->update = $db->prepare("update lutins set numero=:numero, nomProduit=:nomProduit, desProduit=:desProduit, prix=:prix where idProduit=:idProduit");
     }
 
     public function insert($numero, $idType, $nomProduit, $desProduit, $prix, $photo){
@@ -43,10 +43,10 @@ class Produit{
         }
         return $this->selectById->fetch();
     }
-//finir requete update
-    public function update($idProduit, $numero, $nomProduit, $){
+
+    public function update($idProduit, $numero, $nomProduit, $desProduit, $prix){
         $r = true;
-        $this->update->execute(array(':idProduit'=>$idProduit, ':role'=>$role, ':nom'=>$nom,':prenom'=>$prenom));
+        $this->update->execute(array(':idProduit'=>$idProduit, ':numero'=>$numero, ':nomProduit'=>$nomProduit, ':desProduit'=>$desProduit, ':prix'=>$prix));
         if ($this->update->errorCode()!=0){
             print_r($this->update->errorInfo());
             $r=false;
